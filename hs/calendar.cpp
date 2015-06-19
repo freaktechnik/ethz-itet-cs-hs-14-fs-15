@@ -12,7 +12,7 @@ using namespace std;
 
 const unsigned int DAYS_PER_WEEK = 7;
 const unsigned int DAYS_PER_YEAR = 365;
-const unsigned int REFERENCE_DAY_CORRECTION = 0 ;
+const unsigned int REFERENCE_DAY_CORRECTION = 6;
 
 bool isLeapYear(const unsigned int year) {
     return year % 4 == 0 && (year % 100 != 0 || year % 400 == 0);
@@ -39,14 +39,14 @@ unsigned int getDaysOfMonth(const unsigned int month, const unsigned int year) {
         return 30;
     }
     else {
-        return 30;
+        return 31;
     }
 }
 
 unsigned int getDaysOfPassedMonths(const unsigned int month, const unsigned int year) {
     unsigned int ret = 0;
     for(unsigned int i = 1; i < month; ++i) {
-        ret += getDaysOfMonth(month, year);
+        ret += getDaysOfMonth(i, year);
     }
     
     return ret;
