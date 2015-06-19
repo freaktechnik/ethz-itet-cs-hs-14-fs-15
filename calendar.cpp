@@ -19,7 +19,7 @@ bool isLeapYear(const unsigned int year) {
 }
 
 unsigned int getDaysOfYear(const unsigned int year) {
-    return 365 + isLeapYear(year);
+    return 365 + isLeapYear(year) ? 1 : 0;
 }
 
 unsigned int getDaysUntilYear(const unsigned int year) {
@@ -32,7 +32,7 @@ unsigned int getDaysUntilYear(const unsigned int year) {
 
 unsigned int getDaysOfMonth(const unsigned int month, const unsigned int year) {
     if(month == 2) {
-        return 28 + isLeapYear(year);
+        return 28 + isLeapYear(year) ? 1 : 0;
     }
     else if(month == 4 || month == 6 || month == 9 || month == 11) {
         return 30;
