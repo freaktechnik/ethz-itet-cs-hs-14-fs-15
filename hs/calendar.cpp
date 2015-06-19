@@ -48,7 +48,7 @@ unsigned int getDaysOfPassedMonths(const unsigned int month, const unsigned int 
     for(unsigned int i = 1; i < month; ++i) {
         ret += getDaysOfMonth(i, year);
     }
-    
+
     return ret;
 }
 
@@ -80,8 +80,8 @@ int main(void) {
     cin >> month;
     cout << "Year? ";
     cin >> year;
-    
+
     cout << getWeekday(day, month, year) << endl;
-    
+
     return 0;
 }
