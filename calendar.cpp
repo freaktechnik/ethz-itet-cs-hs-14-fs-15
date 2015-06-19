@@ -12,27 +12,28 @@ using namespace std;
 
 const unsigned int DAYS_PER_WEEK = 7;
 const unsigned int DAYS_PER_YEAR = 365;
-const unsigned int REFERENCE_DAY_CORRECTION = 3;
+const unsigned int REFERENCE_DAY_CORRECTION = 0 ;
 
 bool isLeapYear(const unsigned int year) {
     return year % 4 == 0 && (year % 100 != 0 || year % 400 == 0);
 }
 
 unsigned int getDaysOfYear(const unsigned int year) {
-    return 365 + isLeapYear(year) ? 1 : 0;
+    return DAYS_PER_YEAR + (isLeapYear(year) ? 1 : 0);
 }
 
 unsigned int getDaysUntilYear(const unsigned int year) {
     unsigned int ret = REFERENCE_DAY_CORRECTION;
-    for(unsigned int i = 0; i < year; ++i) {
+    for(unsigned int i = 1; i < year; ++i) {
         ret += getDaysOfYear(i);
     }
     return ret;
 }
 
+// I'd prefer to const the month length more, but I'm not really sure how...
 unsigned int getDaysOfMonth(const unsigned int month, const unsigned int year) {
     if(month == 2) {
-        return 28 + isLeapYear(year) ? 1 : 0;
+        return 28 + (isLeapYear(year) ? 1 : 0);
     }
     else if(month == 4 || month == 6 || month == 9 || month == 11) {
         return 30;
@@ -44,7 +45,7 @@ unsigned int getDaysOfMonth(const unsigned int month, const unsigned int year) {
 
 unsigned int getDaysOfPassedMonths(const unsigned int month, const unsigned int year) {
     unsigned int ret = 0;
-    for(unsigned int i = 0; i < month; ++i) {
+    for(unsigned int i = 1; i < month; ++i) {
         ret += getDaysOfMonth(month, year);
     }
     
