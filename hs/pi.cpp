@@ -6,11 +6,12 @@
  */
 
 #include <iostream>
+#include <cmath>
 
 using namespace std;
 
 double getPi4Summand(const unsigned int n) {
-    return (n % 2 == 1 ? -1.0 : 1.0) / (2 * n + 1);
+    return (n % 2 == 1 ? -1.0d : 1.0d) / (2 * n + 1);
 }
 
 unsigned long fac(const unsigned int n) {
@@ -65,7 +66,7 @@ int main(void) {
 
     cout << "PI: " << getPi(accuracy, method) << endl;
 
-    //cout << "The builtin PI constant for comparison: " << PI << endl;
+    cout << "The builtin PI constant for comparison: " << M_PI << endl;
 
     return 0;
 }
