@@ -74,9 +74,7 @@ public:
     // POST: Queue is emptied (memory is freed) and initialized with elements
     //       from queue other.
     void operator=(const Queue& other) {
-        while(!this->is_empty()) {
-            this->dequeue();
-        }
+        this->~Queue();
 
         Node* curr = other.first;
         while(curr) {
@@ -88,7 +86,7 @@ public:
     // PRE:  Valid queue.
     // POST: Queue is emptied and memory is freed.
     ~Queue() {
-        while(this->is_empty()) {
+        while(!this->is_empty()) {
             this->dequeue();
         }
     };
