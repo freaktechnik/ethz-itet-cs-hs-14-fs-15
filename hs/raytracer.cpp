@@ -3,7 +3,7 @@
  * Title: ray tracer
  * Author: Martin Giger
  * Date: 22.06.2015
- * Vastly based off the provided structures in teh exercise (for obvious reasons)
+ * Vastly based off the provided structures in the exercise (for obvious reasons)
  */
 
 #include <cmath>
@@ -271,8 +271,9 @@ struct Scene {
                 c += this->lightColor * S->diffuseColor * (shadow.direction * normal);
 
             // iii) specular highlighting
-                if(reflection.direction * shadow.direction > 0) {
-                    c += this->lightColor * S->reflectionColor * pow(reflection.direction * shadow.direction, 16);
+                double projectionAngle = reflection.direction * shadow.direction;
+                if(projectionAngle > 0) {
+                    c += this->lightColor * S->reflectionColor * pow(projectionAngle, 16);
                 }
             }
 
